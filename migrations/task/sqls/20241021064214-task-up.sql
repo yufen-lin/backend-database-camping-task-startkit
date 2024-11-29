@@ -428,6 +428,43 @@ WHERE
 -- 5. 授課結束時間`end_at`設定為2024-11-25 16:00:00
 -- 6. 最大授課人數`max_participants` 設定為10
 -- 7. 授課連結設定`meeting_url`為 https://test-meeting.test.io
+INSERT INTO
+    "COURSE" (
+        user_id,
+        skill_id,
+        "name",
+        start_at,
+        end_at,
+        max_participants,
+        meeting_url
+    )
+VALUES
+    (
+        (
+            SELECT
+                id
+            FROM
+                "USER"
+            WHERE
+                email = 'lee2000@hexschooltest.io'
+        ), -- 利用用戶 mail 找到用戶 id (user_id)
+        (
+            SELECT
+                id
+            FROM
+                "SKILL"
+            WHERE
+                name = '重訓'
+        ), -- 利用專長名稱找到專長 id (skill_id)
+        '重訓基礎課', -- 課程名稱 (name)
+        '2024-11-25 14:00:00', -- 授課開始時間 (start_at)
+        '2024-11-25 16:00:00', -- 授課結束時間 (end_at)
+        10, -- 最大授課人數 (max_participants)
+        'https://test-meeting.test.io' -- (授課連結設定 meeting_url)
+    );
+
+-- 驗證 4 結果
+-- SELECT * FROM "COURSE" c ;
 -- ████████  █████   █    █████ 
 --   █ █   ██    █  █     █     
 --   █ █████ ███ ███      ████  
