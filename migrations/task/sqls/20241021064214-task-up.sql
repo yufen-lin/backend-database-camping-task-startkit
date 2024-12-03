@@ -68,115 +68,25 @@ VALUES
 -- 2. `王小明` 購買 `21 堂組合包方案`
 -- 3. `好野人` 購買 `14 堂組合包方案`
 -- Solution 1
-INSERT INTO
-    "CREDIT_PURCHASE" (
-        user_id,
-        credit_package_id,
-        purchased_credits,
-        price_paid
-    )
+INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
 VALUES
     (
-        (
-            SELECT
-                id
-            FROM
-                "USER"
-            WHERE
-                name = '王小明'
-        ),
-        (
-            SELECT
-                id
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        ),
-        (
-            SELECT
-                credit_amount
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        ),
-        (
-            SELECT
-                price
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        )
+        (SELECT id FROM "USER" WHERE name = '王小明'),
+        (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+        (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+        (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
     ),
     (
-        (
-            SELECT
-                id
-            FROM
-                "USER"
-            WHERE
-                name = '王小明'
-        ),
-        (
-            SELECT
-                id
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '21 堂組合包方案'
-        ),
-        (
-            SELECT
-                credit_amount
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '21 堂組合包方案'
-        ),
-        (
-            SELECT
-                price
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '21 堂組合包方案'
-        )
+        (SELECT id FROM "USER" WHERE name = '王小明'),
+        (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '21 堂組合包方案'),
+        (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '21 堂組合包方案'),
+        (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '21 堂組合包方案')
     ),
     (
-        (
-            SELECT
-                id
-            FROM
-                "USER"
-            WHERE
-                name = '好野人'
-        ),
-        (
-            SELECT
-                id
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        ),
-        (
-            SELECT
-                credit_amount
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        ),
-        (
-            SELECT
-                price
-            FROM
-                "CREDIT_PACKAGE"
-            WHERE
-                name = '14 堂組合包方案'
-        )
+        (SELECT id FROM "USER" WHERE name = '好野人'),
+        (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+        (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+        (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
     );
 
 -- Solution 2
@@ -219,7 +129,7 @@ INSERT INTO
 VALUES
     ((SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io'),2),
     ((SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io'),2),
-    ((SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io'),2)
+    ((SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io'),2);
 
 -- 3-2. 新增：承1，為三名教練新增專長資料至 `COACH_LINK_SKILL` ，資料需求如下：
 -- 1. 所有教練都有 `重訓` 專長
